@@ -122,7 +122,7 @@ install(DIRECTORY
 
 # Install RVIZ files
 install(DIRECTORY
-  config
+  rviz
   DESTINATION share/${PROJECT_NAME}
 )
 
