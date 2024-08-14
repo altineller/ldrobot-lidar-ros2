@@ -1,18 +1,3 @@
-# Copyright 2022 Walter Lucetti
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-###########################################################################
-
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -37,7 +22,7 @@ def generate_launch_description():
     declare_node_name_cmd = DeclareLaunchArgument(
         'node_name',
         default_value='ldlidar_node',
-        description='Name of the node'
+        description='ldlidar node'
     )
 
     # LDLidar lifecycle node
@@ -48,12 +33,12 @@ def generate_launch_description():
         namespace='',
         output='screen',
         parameters=[
-            # YAML files
             lidar_config_path  # Parameters
         ]
     )
 
     # URDF path
+    '''
     urdf_file_name = 'ldlidar_descr.urdf.xml'
     urdf = os.path.join(
         get_package_share_directory('ldlidar_node'),
@@ -71,6 +56,7 @@ def generate_launch_description():
         parameters=[{'robot_description': robot_desc}],
         arguments=[urdf]
     )
+    '''
 
     # Define LaunchDescription variable
     ld = LaunchDescription()
@@ -79,7 +65,7 @@ def generate_launch_description():
     ld.add_action(declare_node_name_cmd)
 
     # Launch Nav2 Lifecycle Manager
-    ld.add_action(rsp_node)
+    ##ld.add_action(rsp_node)
 
     # LDLidar Lifecycle node
     ld.add_action(ldlidar_node)

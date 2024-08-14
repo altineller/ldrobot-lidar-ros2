@@ -1,6 +1,6 @@
-# config/lifecycle_mgr.yaml
-#
 # Example configuration file to automatically handle the ldlidar lifecycle node
+
+# TODO: move all to config
 
 /**:
   ros__parameters:
