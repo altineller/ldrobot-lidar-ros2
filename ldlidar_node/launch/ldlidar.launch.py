@@ -30,7 +30,7 @@ def generate_launch_description():
         package='ldlidar_node',
         executable='ldlidar_node',
         name=node_name,
-        namespace='/',
+        namespace='',
         output='screen',
         parameters=[
             lidar_config_path  # Parameters
