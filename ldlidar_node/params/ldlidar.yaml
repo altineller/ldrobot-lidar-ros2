@@ -12,12 +12,12 @@
       model: 'LDLiDAR_LD19'   # LDLiDAR_LD06, LDLiDAR_LD19, LDLiDAR_STL27L
       rot_verse: 'CCW'        # CW, CCW
       units: 'M'              # MM, CM, M
-      frame_id: 'ldlidar_link'
+      frame_id: 'base_scan'
       # set to 0 for dynamic scan size according to rotation speed,
       # set to a fixed value [e.g. 455] for compatibility with SLAM Toolbox
       bins: 455
-      range_min: 0.03
+      range_min: 0.1
       range_max: 12.0
       enable_angle_crop: true
-      angle_crop_min: 90.0
-      angle_crop_max: 270.0
+      angle_crop_min: 120.0
+      angle_crop_max: 240.0
