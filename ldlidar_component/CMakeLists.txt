@@ -65,7 +65,7 @@ else()
 endif()
 
 if(ROS2_FOUND)
-  if(${FOUND_ROS2_DISTRO} STREQUAL "humble")
+  if(${FOUND_ROS2_DISTRO} STREQUAL "jazzy")
     message(STATUS "* ROS2 ${FOUND_ROS2_DISTRO} is officially supported by this package.")
     add_definitions(-DFOUND_HUMBLE)
   else()

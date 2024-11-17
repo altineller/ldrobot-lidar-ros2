@@ -22,7 +22,7 @@ def generate_launch_description():
     declare_node_name_cmd = DeclareLaunchArgument(
         'node_name',
         default_value='ldlidar_node',
-        description='ldlidar node'
+        description='ldlidar node name'
     )
 
     # LDLidar lifecycle node
