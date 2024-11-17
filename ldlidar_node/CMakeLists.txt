@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(ldlidar_node)
 
-################################################
 ## Generate symbols for IDE indexer (VSCode)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -38,9 +37,7 @@ if(CMAKE_BUILD_TYPE MATCHES Debug)
     message(STATUS " * Debug Mode")
 endif()
 
-################################################
 # Check the ROS2 version
-
 set(ROS2_FOUND FALSE)
 if(DEFINED ENV{ROS_DISTRO})
   set(FOUND_ROS2_DISTRO $ENV{ROS_DISTRO})
@@ -63,20 +60,22 @@ else()
 endif()
 
 if(ROS2_FOUND)
+
   if(${FOUND_ROS2_DISTRO} STREQUAL "jazzy")
+    message(STATUS "* ROS2 ${FOUND_ROS2_DISTRO} is officially supported by this package.")
+    add_definitions(-DFOUND_JAZZY)
+  elseif(${FOUND_ROS2_DISTRO} STREQUAL "humble")
     message(STATUS "* ROS2 ${FOUND_ROS2_DISTRO} is officially supported by this package.")
     add_definitions(-DFOUND_HUMBLE)
   else()
-    message(FATAL_ERROR "ROS2 ${FOUND_ROS2_DISTRO} is not officially supported by this package. Correct working is not guarantee.")
+    message(FATAL_ERROR "ROS2 ${FOUND_ROS2_DISTRO} is not officially supported by this package. Correct working is not guaranteed.")
   endif()
+
 else()
   message(FATAL_ERROR "*** WARNING *** ROS2 distro is unknown. This package could not work correctly.")
 endif()
-################################################
 
-#############################################
 # Dependencies
-
 set(DEPENDENCIES
     rclcpp_lifecycle
     rclcpp
@@ -91,15 +90,12 @@ find_package(rclcpp_lifecycle REQUIRED)
 find_package(rcutils REQUIRED)
 find_package(ldlidar_component REQUIRED)
 
-###############################################################################
 # SOURCES
 set(CONTAINER_SRC
   ${CMAKE_CURRENT_SOURCE_DIR}/src/ldlidar_container_node.cpp
 )
 
-###############################################################################
 # Bin and Install
-
 add_executable(${PROJECT_NAME}
   ${CONTAINER_SRC}
 )
